@@ -1,0 +1,68 @@
+@startuml
+class Course {
+    - courseName: String
+    - instructors: List<Instructor>
+    - textbooks: List<Textbook>
+
+    + Course(courseName: String)
+    + addInstructor(instructor: Instructor): void
+    + addTextbook(textbook: Textbook): void
+    + getCourseName(): String
+    + setCourseName(name: String)
+    + print(): void
+}
+
+class Instructor {
+    - firstName: String
+    - lastName: String
+    - officeNumber: String
+
+    + Instructor(firstName: String, lastName: String, officeNumber: String)
+    + getFirstName(): String
+    + setFirstName(name: String)
+    + getLastName(): String
+    + setLastName(name: String)
+    + getOfficeNumber(): String
+    + setOfficeNumber(number: String)
+}
+
+class Textbook {
+    - title: String
+    - author: String
+    - publisher: String
+
+    + Textbook(title: String, author: String, publisher: String)
+    + getTitle(): String
+    + setTitle(title: String)
+    + getAuthor(): String
+    + setAuthor(author: String)
+    + getPublisher(): String
+    + setPublisher(publisher: String)
+}
+
+Course o-- Instructor : "has-a"
+Course o-- Textbook : "has-a"
+
+@enduml
+
+@startuml
+object "<u>course:Course</u>" as co {
+    courseName = "Software Engineering"
+}
+
+object "<u>instructor1:Instructor</u>" as i1 {
+    firstName = "Nima"
+    lastName = "Davarpanah"
+    officeNumber = "3-2636"
+}
+
+object "<u>textbook1:Textbook</u>" as tb1 {
+    title = "Clean Code"
+    author = "Robert C. Martin"
+    publisher = "Prentice Hall"
+}
+
+co --> i1 : "has-a"
+co --> tb1 : "has-a"
+@enduml
+

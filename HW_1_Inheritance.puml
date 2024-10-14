@@ -1,0 +1,59 @@
+@startuml
+class Employee {
+    - firstName: String
+    - lastName: String
+    - socialSecurityNumber: String
+
+    + Employee(firstName: String, lastName: String, ssn: String)
+    + getFirstName(): String
+    + setFirstName(firstName: String)
+    + getLastName(): String
+    + setLastName(lastName: String)
+    + getSocialSecurityNumber(): String
+    + setSocialSecurityNumber(ssn: String)
+}
+
+class SalariedEmployee extends Employee {
+    - weeklySalary: double
+
+    + SalariedEmployee(firstName: String, lastName: String, ssn: String, weeklySalary: double)
+    + getWeeklySalary(): double
+    + setWeeklySalary(salary: double)
+}
+
+class HourlyEmployee extends Employee {
+    - wage: double
+    - hoursWorked: double
+
+    + HourlyEmployee(firstName: String, lastName: String, ssn: String, wage: double, hoursWorked: double)
+    + getWage(): double
+    + setWage(wage: double)
+    + getHoursWorked(): double
+    + setHoursWorked(hours: double)
+}
+
+class CommissionEmployee extends Employee {
+    - commissionRate: double
+    - grossSales: double
+
+    + CommissionEmployee(firstName: String, lastName: String, ssn: String, commissionRate: double, grossSales: double)
+    + getCommissionRate(): double
+    + setCommissionRate(rate: double)
+    + getGrossSales(): double
+    + setGrossSales(sales: double)
+}
+
+class BaseEmployee extends CommissionEmployee {
+    - baseSalary: double
+
+    + BaseEmployee(firstName: String, lastName: String, ssn: String, commissionRate: double, grossSales: double, baseSalary: double)
+    + getBaseSalary(): double
+    + setBaseSalary(salary: double)
+}
+
+Employee <|-- SalariedEmployee
+Employee <|-- HourlyEmployee
+Employee <|-- CommissionEmployee
+CommissionEmployee <|-- BaseEmployee
+
+@enduml

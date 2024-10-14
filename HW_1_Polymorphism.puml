@@ -1,0 +1,55 @@
+@startuml
+class Ship {
+    - name: String
+    - yearBuilt: String
+
+    + Ship(name: String, yearBuilt: String)
+    + getName(): String
+    + setName(name: String)
+    + getYearBuilt(): String
+    + setYearBuilt(year: String)
+    + print(): void
+}
+
+class CruiseShip extends Ship {
+    - maxPassengers: int
+
+    + CruiseShip(name: String, yearBuilt: String, maxPassengers: int)
+    + getMaxPassengers(): int
+    + setMaxPassengers(passengers: int)
+    + print(): void
+}
+
+class CargoShip extends Ship {
+    - cargoCapacity: int
+
+    + CargoShip(name: String, yearBuilt: String, cargoCapacity: int)
+    + getCargoCapacity(): int
+    + setCargoCapacity(capacity: int)
+    + print(): void
+}
+
+Ship <|-- CruiseShip
+Ship <|-- CargoShip
+
+@enduml
+
+@startuml
+object "<u>genericShip:Ship</u>" as gs {
+    name = "Generic Ship"
+    yearBuilt = "1990"
+}
+
+object "<u>cruiseShip:CruiseShip</u>" as cs {
+    name = "Cruise Ship"
+    yearBuilt = "2000"
+    maxPassengers = 2000
+}
+
+object "<u>cargoShip:CargoShip</u>" as ca {
+    name = "Cargo Ship"
+    yearBuilt = "1980"
+    cargoCapacity = 50000
+}
+
+@enduml

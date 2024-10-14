@@ -1,0 +1,44 @@
+@startuml
+class File {
+    - name: String
+
+    + File(name: String)
+    + getName(): String
+    + setName(name: String)
+    + print(): void
+}
+
+class Folder {
+    - name: String
+    - files: List<File>
+    - subFolders: List<Folder>
+
+    + Folder(name: String)
+    + addFile(file: File): void
+    + addSubFolder(folder: Folder): void
+    + deleteSubFolder(folder: Folder): void
+    + deleteFile(file: File): void
+    + print(): void
+}
+
+Folder *-- File : "contains"
+Folder *-- Folder : "contains subfolders"
+
+@enduml
+
+@startuml
+object "<u>php_demo1:Folder</u>" as folder {
+    name = "php_demo1"
+}
+
+object "<u>publicFolder:Folder</u>" as public {
+    name = "public"
+}
+
+object "<u>readmeFile:File</u>" as readme {
+    name = "README.txt"
+}
+
+folder --> public : "contains"
+folder --> readme : "contains"
+@enduml
